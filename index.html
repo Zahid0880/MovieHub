@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Hub - Free to download movies</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Movies Hub</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="about">About</a>
+                <a href="#" class="nav-link" data-page="category">Category</a>
+                <a href="#" class="nav-link" data-page="year">Year</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Secondary Navigation -->
+    <nav class="secondary-nav">
+        <div class="container">
+            <div class="category-menu">
+                <a href="#" class="category-link active" data-category="all">All</a>
+                <a href="#" class="category-link" data-category="action">Action</a>
+                <a href="#" class="category-link" data-category="action-movies">Action Movies</a>
+                <a href="#" class="category-link" data-category="bollywood">Bollywood</a>
+                <a href="#" class="category-link" data-category="hollywood">Hollywood</a>
+                <a href="#" class="category-link" data-category="tollywood">Tollywood</a>
+                <a href="#" class="category-link" data-category="punjabi">Punjabi Movies</a>
+                <a href="#" class="category-link" data-category="english">English movies</a>
+                <a href="#" class="category-link" data-category="tamil">Tamil movies</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <main class="main-content page-content" id="homePage">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-section">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Find any movie" class="search-input">
+                    <button id="searchBtn" class="search-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Movies Grid -->
+            <section class="movies-section">
+                <div class="movies-grid" id="moviesGrid">
+                    <!-- Movies will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <button class="page-btn" id="backBtn">Back</button>
+                <button class="page-btn page-number active" data-page="1">1</button>
+                <button class="page-btn page-number" data-page="2">2</button>
+                <button class="page-btn page-number" data-page="3">3</button>
+                <button class="page-btn page-number" data-page="4">4</button>
+                <button class="page-btn page-number" data-page="5">5</button>
+                <button class="page-btn page-number" data-page="6">6</button>
+                <button class="page-btn" id="nextBtn">Next</button>
+            </div>
+
+            <!-- About Section -->
+            <section class="about-section">
+                <h2>About</h2>
+                <h3>Movies hub - Free</h3>
+                <h4>to download movies</h4>
+            </section>
+        </div>
+    </main>
+
+    <!-- Movie Details Page -->
+    <main class="main-content page-content" id="movieDetailsPage" style="display: none;">
+        <div class="container">
+            <button class="back-to-home-btn" id="backToHomeBtn">← Back to Movies</button>
+            
+            <div class="movie-details-container">
+                <div class="movie-poster-section">
+                    <div class="movie-poster-large">
+                        <img id="movieDetailsPoster" src="/placeholder.svg" alt="Movie Poster">
+                    </div>
+                </div>
+                
+                <div class="movie-info-section">
+                    <h1 id="movieDetailsTitle">Movie Title</h1>
+                    
+                    <div class="movie-meta-info">
+                        <div class="meta-item">
+                            <span class="meta-label">IMDB Rating:</span>
+                            <span class="meta-value" id="movieRating">8.5/10</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Release Year:</span>
+                            <span class="meta-value" id="movieYear">2023</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Category:</span>
+                            <span class="meta-value" id="movieCategory">Action</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Language:</span>
+                            <span class="meta-value" id="movieLanguage">Hindi - English</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Duration:</span>
+                            <span class="meta-value" id="movieDuration">2 hr 15 minutes</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Size:</span>
+                            <span class="meta-value" id="movieSize">2.1GB - 1.4GB - 850MB</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Format:</span>
+                            <span class="meta-value" id="movieFormat">MKV</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Quality:</span>
+                            <span class="meta-value" id="movieQuality">WEB-DL 720p - 480p - 1080p</span>
+                        </div>
+                    </div>
+
+                    <div class="movie-description">
+                        <h3>Movie Description</h3>
+                        <p id="movieDescription">
+                            This is an exciting movie with great action sequences and compelling storyline. 
+                            The movie features outstanding performances and high-quality production values.
+                        </p>
+                    </div>
+
+                    <div class="download-section">
+                        <h3>Download Links</h3>
+                        <div class="download-options">
+                            <div class="quality-section">
+                                <h4>480p Quality</h4>
+                                <div class="download-links">
+                                    <button class="download-link-btn" data-quality="480p" data-server="1">
+                                        <span class="server-name">Server 1</span>
+                                        <span class="file-size">850MB</span>
+                                    </button>
+                                    <button class="download-link-btn" data-quality="480p" data-server="2">
+                                        <span class="server-name">Server 2</span>
+                                        <span class="file-size">850MB</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="quality-section">
+                                <h4>720p Quality</h4>
+                                <div class="download-links">
+                                    <button class="download-link-btn" data-quality="720p" data-server="1">
+                                        <span class="server-name">Server 1</span>
+                                        <span class="file-size">1.4GB</span>
+                                    </button>
+                                    <button class="download-link-btn" data-quality="720p" data-server="2">
+                                        <span class="server-name">Server 2</span>
+                                        <span class="file-size">1.4GB</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="quality-section">
+                                <h4>1080p Quality</h4>
+                                <div class="download-links">
+                                    <button class="download-link-btn" data-quality="1080p" data-server="1">
+                                        <span class="server-name">Server 1</span>
+                                        <span class="file-size">2.1GB</span>
+                                    </button>
+                                    <button class="download-link-btn" data-quality="1080p" data-server="2">
+                                        <span class="server-name">Server 2</span>
+                                        <span class="file-size">2.1GB</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="watch-online-section">
+                        <h3>Watch Online</h3>
+                        <button class="watch-online-btn" id="watchOnlineBtn">
+                            <span>▶</span> Watch Online Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Movies -->
+            <section class="related-movies-section">
+                <h3>Related Movies</h3>
+                <div class="related-movies-grid" id="relatedMoviesGrid">
+                    <!-- Related movies will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- About Page -->
+    <main class="main-content page-content" id="aboutPage" style="display: none;">
+        <div class="container">
+            <section class="content-page">
+                <h1>About Movies Hub</h1>
+                
+                <div class="about-content">
+                    <div class="about-intro">
+                        <h2>Welcome to Movies Hub - Your Ultimate Movie Destination</h2>
+                        <p>Movies Hub is your premier destination for downloading high-quality movies across all genres and languages. We provide a vast collection of the latest releases, classic films, and regional cinema to satisfy every movie enthusiast's taste.</p>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h3>🎬 Vast Collection</h3>
+                            <p>Access thousands of movies from Hollywood, Bollywood, Tollywood, and regional cinema including Tamil, Punjabi, and English movies.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>📱 Multiple Formats</h3>
+                            <p>Download movies in various formats and quality options - from 480p to 1080p, ensuring compatibility with all your devices.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>⚡ Fast Downloads</h3>
+                            <p>Experience lightning-fast download speeds with our optimized servers and multiple download links for each movie.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h3>🆓 Completely Free</h3>
+                            <p>Enjoy unlimited movie downloads without any subscription fees or hidden charges. Entertainment should be accessible to everyone.</p>
+                        </div>
+                    </div>
+
+                    <div class="mission-section">
+                        <h2>Our Mission</h2>
+                        <p>At Movies Hub, we believe that great entertainment should be accessible to everyone. Our mission is to provide a user-friendly platform where movie lovers can discover, explore, and download their favorite films without any barriers. We continuously update our collection with the latest releases and maintain high-quality standards for all our content.</p>
+                    </div>
+
+                    <div class="quality-section">
+                        <h2>Quality Assurance</h2>
+                        <ul>
+                            <li>All movies are available in multiple quality options (480p, 720p, 1080p)</li>
+                            <li>Regular updates with latest movie releases</li>
+                            <li>Verified download links for secure downloading</li>
+                            <li>Detailed movie information including IMDB ratings</li>
+                            <li>Multiple server options for reliable downloads</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Category Page -->
+    <main class="main-content page-content" id="categoryPage" style="display: none;">
+        <div class="container">
+            <section class="content-page">
+                <h1>Movie Categories</h1>
+                
+                <div class="categories-content">
+                    <p class="categories-intro">Explore our extensive collection of movies organized by categories. From action-packed thrillers to heartwarming romances, we have something for every mood and preference.</p>
+                    
+                    <div class="categories-grid">
+                        <div class="category-card" data-category="action">
+                            <div class="category-icon">🎬</div>
+                            <h3>Action Movies</h3>
+                            <p>High-octane action films with thrilling sequences, stunts, and adventure.</p>
+                            <span class="movie-count">150+ Movies</span>
+                        </div>
+                        
+                        <div class="category-card" data-category="bollywood">
+                            <div class="category-icon">🎭</div>
+                            <h3>Bollywood</h3>
+                            <p>Latest and classic Hindi movies from the heart of Indian cinema.</p>
+                            <span class="movie-count">200+ Movies</span>
+                        </div>
+                        
+                        <div class="category-card" data-category="hollywood">
+                            <div class="category-icon">🌟</div>
+                            <h3>Hollywood</h3>
+                            <p>Blockbuster English movies from major Hollywood studios.</p>
+                            <span class="movie-count">300+ Movies</span>
+                        </div>
+                        
+                        <div class="category-card" data-category="tollywood">
+                            <div class="category-icon">🎪</div>
+                            <h3>Tollywood</h3>
+                            <p>Telugu cinema with spectacular storytelling and performances.</p>
+                            <span class="movie-count">120+ Movies</span>
+                        </div>
+                        
+                        <div class="category-card" data-category="punjabi">
+                            <div class="category-icon">🎵</div>
+                            <h3>Punjabi Movies</h3>
+                            <p>Vibrant Punjabi films with music, culture, and entertainment.</p>
+                            <span class="movie-count">80+ Movies</span>
+                        </div>
+                        
+                        <div class="category-card" data-category="tamil">
+                            <div class="category-icon">🎨</div>
+                            <h3>Tamil Movies</h3>
+                            <p>Rich Tamil cinema with diverse genres and compelling narratives.</p>
+                            <span class="movie-count">100+ Movies</span>
+                        </div>
+                    </div>
+
+                    <div class="genre-section">
+                        <h2>Popular Genres</h2>
+                        <div class="genre-tags">
+                            <span class="genre-tag">Action</span>
+                            <span class="genre-tag">Comedy</span>
+                            <span class="genre-tag">Drama</span>
+                            <span class="genre-tag">Romance</span>
+                            <span class="genre-tag">Thriller</span>
+                            <span class="genre-tag">Horror</span>
+                            <span class="genre-tag">Sci-Fi</span>
+                            <span class="genre-tag">Adventure</span>
+                            <span class="genre-tag">Animation</span>
+                            <span class="genre-tag">Biography</span>
+                            <span class="genre-tag">Crime</span>
+                            <span class="genre-tag">Documentary</span>
+                            <span class="genre-tag">Family</span>
+                            <span class="genre-tag">Fantasy</span>
+                            <span class="genre-tag">History</span>
+                            <span class="genre-tag">Music</span>
+                            <span class="genre-tag">Mystery</span>
+                            <span class="genre-tag">Sport</span>
+                            <span class="genre-tag">War</span>
+                            <span class="genre-tag">Western</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Year Page -->
+    <main class="main-content page-content" id="yearPage" style="display: none;">
+        <div class="container">
+            <section class="content-page">
+                <h1>Movies by Year</h1>
+                
+                <div class="years-content">
+                    <p class="years-intro">Browse movies by release year. From the latest 2024 releases to classic films from previous decades, find movies from any era you prefer.</p>
+                    
+                    <div class="years-grid">
+                        <div class="year-card" data-year="2024">
+                            <h3>2024</h3>
+                            <p>Latest releases and upcoming movies</p>
+                            <span class="movie-count">45+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2023">
+                            <h3>2023</h3>
+                            <p>Popular movies from last year</p>
+                            <span class="movie-count">120+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2022">
+                            <h3>2022</h3>
+                            <p>Blockbusters and critically acclaimed films</p>
+                            <span class="movie-count">150+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2021">
+                            <h3>2021</h3>
+                            <p>Movies from the pandemic era</p>
+                            <span class="movie-count">130+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2020">
+                            <h3>2020</h3>
+                            <p>Memorable films from 2020</p>
+                            <span class="movie-count">110+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2019">
+                            <h3>2019</h3>
+                            <p>Award-winning movies and box office hits</p>
+                            <span class="movie-count">140+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2018">
+                            <h3>2018</h3>
+                            <p>Great cinema from 2018</p>
+                            <span class="movie-count">125+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2017">
+                            <h3>2017</h3>
+                            <p>Diverse collection from 2017</p>
+                            <span class="movie-count">115+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2016">
+                            <h3>2016</h3>
+                            <p>Popular releases from 2016</p>
+                            <span class="movie-count">100+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2015">
+                            <h3>2015</h3>
+                            <p>Classic movies from 2015</p>
+                            <span class="movie-count">95+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2010-2014">
+                            <h3>2010-2014</h3>
+                            <p>Movies from the early 2010s</p>
+                            <span class="movie-count">200+ Movies</span>
+                        </div>
+                        
+                        <div class="year-card" data-year="2000-2009">
+                            <h3>2000-2009</h3>
+                            <p>Classic films from the 2000s</p>
+                            <span class="movie-count">180+ Movies</span>
+                        </div>
+                    </div>
+
+                    <div class="decade-section">
+                        <h2>Browse by Decade</h2>
+                        <div class="decade-list">
+                            <div class="decade-item">
+                                <h4>2020s</h4>
+                                <p>Modern cinema with cutting-edge technology and storytelling</p>
+                            </div>
+                            <div class="decade-item">
+                                <h4>2010s</h4>
+                                <p>The golden age of superhero movies and franchise films</p>
+                            </div>
+                            <div class="decade-item">
+                                <h4>2000s</h4>
+                                <p>Digital revolution era with memorable blockbusters</p>
+                            </div>
+                            <div class="decade-item">
+                                <h4>1990s</h4>
+                                <p>Classic 90s cinema with iconic movies and stars</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
